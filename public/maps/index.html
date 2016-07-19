@@ -1,82 +1,131 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Simple icons</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-      #button{
-        z-index: 10;
-        position: absolute;
-        bottom: 30px;
-        left: 30px;
-      }
 
+<head>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="script.js" type="text/javascript">
 
-      /*//////////////////////////////////////////*/
-      .dropbtn {
-    position: absolute;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.dropdown {
-    float: right;
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 170px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    bottom: 90px;
-    left: 30px;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.show {display:block;}
-
-/*/////////////////////////////*/
-
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <div id="capture"></div>
-    <div class="dropdown" id="button">
-      <input  onclick="myFunction()" class="dropbtn" id="button" type="image" src="../images/info.png" />
-
-  <div id="myDropdown" class="dropdown-content">
-    <a href="#home">Waikiki Beach: 6/16/16 9:30pm</a>
-    <a href="#about">Diamond Head: 6/24/16 1:30am</a>
-  </div>
-</div>
-    <!--<input id="button" type="image" src="../images/info.png" />-->
+  </script>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,200,500,600,700' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
+  <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"
+  />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>Simple icons</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
     
+    #map {
+      height: 100%;
+    }
+    
+    #button {
+      z-index: 10;
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+    }
+    /*//////////////////////////////////////////*/
+    
+    .dropbtn {
+      position: absolute;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .dropdown {
+      float: right;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 170px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      bottom: 90px;
+      left: 30px;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .show {
+      display: block;
+    }
+    
+    .button {
+      z-index: 10;
+      position: absolute;
+      bottom: 47px;
+      left: 40px;
+    }
+    
+    .emergency {
+      width: 100%;
+      height: 300px;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      color:white;
+      background-color: rgba(92, 92, 92, 0.8);
+      text-align: center;
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    
+    .subtext{
+      font-size:22px;
+    }
+    
+    .text{
+      padding-bottom:10px;
+    margin-top:10px;
+    font-size:25px;
+    border-bottom:1px solid white;
+    font-weight:bold;
+    }
+    /*/////////////////////////////*/
+  </style>
+</head>
 
-  </body>
-  <script>
+<body>
+  <div id="map"></div>
+  <div id="capture"></div>
 
-      function initMap() {
+  <input class="button" type="image" src="../images/info.png" />
+  <div class="emergency">
+    <div class="text">
+    Information
+    </div>
+    <div class="subtext">
+      <br>Waikiki Beach: Checked in 4:21 PM HST
+      <br><br> Diamond Head: Not yet checked in
+      <br>
+    </div>
+  </div>
+
+  <!--<input id="button" type="image" src="../images/info.png" />-->
+
+
+</body>
+<script>
+  function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 16,
           center: {lat: 21.295, lng: -157.84}
@@ -163,6 +212,10 @@
         });
 
       }
+$(".emergency").hide();
+$(".button").click(function(){
+  $(".emergency").slideToggle();
+});
 
       function myFunction() {
         document.getElementById("myDropdown").classList.toggle("show");
@@ -182,8 +235,9 @@
       }
     }
 }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOZPSSq2IzUG-L7oxcpHWEL0jkD1ZIgDc&callback=initMap">
-    </script>
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOZPSSq2IzUG-L7oxcpHWEL0jkD1ZIgDc&callback=initMap">
+
+</script>
+
 </html>
