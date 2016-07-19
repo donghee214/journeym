@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple icons</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+      #button{
+        z-index: 10;
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+      }
+
+
+      /*//////////////////////////////////////////*/
+      .dropbtn {
+    position: absolute;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    float: right;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 170px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    bottom: 90px;
+    left: 30px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.show {display:block;}
+
+/*/////////////////////////////*/
+
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="capture"></div>
+    <div class="dropdown" id="button">
+      <input  onclick="myFunction()" class="dropbtn" id="button" type="image" src="../images/info.png" />
+
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#home">Waikiki Beach: 6/16/16 9:30pm</a>
+    <a href="#about">Diamond Head: 6/24/16 1:30am</a>
+  </div>
+</div>
+    <!--<input id="button" type="image" src="../images/info.png" />-->
+    
+
+  </body>
+  <script>
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: {lat: 21.295, lng: -157.84}
+        });
+
+        var grocery = './images/cart.png';
+	      var volcano = './images/volcano.png';
+        var museum = './images/picture.png';
+        var mall = './images/shopping-center.png';
+        var park = './images/picnic.png';
+        var airport = './images/aeroplane.png';
+        var bear = './images/bear.png';
+        var hospital = './images/placeholder.png';
+        var hand = './images/hand.png';
+        var beach = './images/sunbed.png';
+        var check = './images/check.png';
+
+        var grocery = new google.maps.Marker({
+          position: {lat: 21.293, lng: -157.838},
+          map: map,
+          icon: grocery
+        });
+
+        var volcanoTour = new google.maps.Marker({
+          position: {lat: 21.2954181, lng: -157.8599123},
+          map: map,
+          icon: volcano
+        });
+
+
+        var volcanoCheckin = new google.maps.Marker({
+          position: {lat: 21.2642859, lng: -157.8038835},
+          map: map,
+          icon: check
+        });
+
+
+        var airport = new google.maps.Marker({
+          position: {lat: 21.3245895, lng: -157.9200933},
+          map: map,
+          icon: airport
+        });
+
+        var artMuseum = new google.maps.Marker({
+          position: {lat: 21.303602, lng: -157.847918},
+          map: map,
+          icon: museum
+        });
+
+        var mall = new google.maps.Marker({
+          position: {lat: 21.2917422, lng: -157.8430252},
+          map: map,
+          icon: mall
+        });
+        
+        var park = new google.maps.Marker({
+          position: {lat: 21.2938527, lng: -157.8645757},
+          map: map,
+          icon: park
+        });
+        
+        var wildlife = new google.maps.Marker({
+          position: {lat: 21.303861, lng: -157.8643747},
+          map: map,
+          icon: bear
+        });
+
+        var hospital = new google.maps.Marker({
+          position: {lat: 21.30797, lng: -157.8572567},
+          map: map,
+          icon: hospital
+        });
+
+        var festival = new google.maps.Marker({
+          position: {lat: 21.298781, lng: -157.8536497},
+          map: map,
+          icon: hand
+        });
+
+        var beachCheckin = new google.maps.Marker({
+          position: {lat: 21.28091, lng: -157.836},
+          map: map,
+          icon: check
+        });
+
+      }
+
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOZPSSq2IzUG-L7oxcpHWEL0jkD1ZIgDc&callback=initMap">
+    </script>
+</html>
